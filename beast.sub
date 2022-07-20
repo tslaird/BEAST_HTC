@@ -1,0 +1,20 @@
+universe = vanilla
+executable = run_beast.sh
+arguments = $(inputfile)
+transfer_input_files = beast.tar.gz, IacA_030922.xml, beast_input_list.txt
+output = logs/job_$(process).out
+error = logs/job_$(process).err
+log = logs/job_$(process).log
+requirements = OSGVO_OS_STRING == "RHEL 7" && Arch == "X86_64"
+request_memory = 8GB
+request_disk = 1GB
+request_cpus = 4
+
+notify_user = tslaird@ucdavis.edu
+notification = always
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+queue inputfile from beast_input_list.txt
+
+
